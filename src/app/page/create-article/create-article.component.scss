@@ -1,0 +1,15 @@
+.article-form{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+
+  &__designation{
+    width: 150px;
+
+  }
+}
+
+.article-form h3 {
+  margin: 10px;
+}

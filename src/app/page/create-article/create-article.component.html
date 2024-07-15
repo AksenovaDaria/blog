@@ -1,0 +1,19 @@
+<div [formGroup]="form" >
+  <div class="article-form">
+    <h3 class="article-form__designation">Заголовок</h3>
+    <input formControlName="title" [style]="{border: 'none', width: '400px'}">
+  </div>
+  <div class="article-form" >
+    <h3 class="article-form__designation">Категории</h3>
+    <p-multiSelect
+      [options]="categories"
+      formControlName="category"
+      [style]="{border: 'none', width: '400px'}"
+    ></p-multiSelect>
+  </div>
+  <p-editor
+    formControlName="content"
+    [style]="{ height: '320px' }"
+    (onTextChange)="onTextChange($event)"
+  />
+</div>

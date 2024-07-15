@@ -1,0 +1,15 @@
+<p-menubar>
+  <ng-template pTemplate="start">
+    <p class="bebas-neue-regular" routerLink="">Blog platform</p>
+  </ng-template>
+  <ng-template pTemplate="end">
+    <p-button
+      label="Создать статью"
+      [outlined]="true"
+      severity="secondary"
+      [text]="true"
+      class="p-button-raised p-button-sm p-button-rounded p-button-outlined"
+      routerLink="/create"
+    ></p-button>
+  </ng-template>
+</p-menubar>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { loadArticals, loadCategories } from './store/articals/artical.action';
-import { ButtonModule } from 'primeng/button';
+import { HeaderComponent } from "./core/header/header.component";
 
 
 @Component({
@@ -10,8 +10,8 @@ import { ButtonModule } from 'primeng/button';
   standalone: true,
   imports: [
     RouterOutlet,
-    ButtonModule,
-  ],
+    HeaderComponent
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
