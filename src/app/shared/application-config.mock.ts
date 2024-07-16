@@ -9,10 +9,6 @@ export const Catigories: string[] = [
   'Спорт',
 ];
 
-
-
-
-
 export const Articals: IArtical[] = [
   {
     url: 'first-15-6-1',

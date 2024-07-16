@@ -8,11 +8,13 @@ import { IArtical } from '../../shared/application.config.interface';
 import { tap } from 'rxjs';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import {RouterLink, RouterModule} from '@angular/router';
+
 
 @Component({
   selector: 'app-mainspace',
   standalone: true,
-  imports: [ArticleCardComponent, CommonModule],
+  imports: [ArticleCardComponent, CommonModule, RouterLink],
   templateUrl: './mainspace.component.html',
   styleUrl: './mainspace.component.scss'
 })

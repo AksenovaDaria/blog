@@ -1,8 +1,10 @@
 @if (articals$ | async) {
   @for (artical of articals; track $index) {
-    <app-article-card
-      [title]="artical.title"
-      [content]="artical.content"
-    ></app-article-card>
+      <app-article-card
+        [title]="artical.title"
+        [content]="artical.content"
+        [url]="artical.url"
+      ></app-article-card>
+
   }
 }

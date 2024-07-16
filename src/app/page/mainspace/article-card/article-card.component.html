@@ -1,4 +1,8 @@
-<p-card [style]="{height: '200px'}" >
-  <h3>{{title}}</h3>
-  <div [innerHTML]="content"></div>
+<p-card [style]="{height: '200px'}" (click)="click()">
+  <h3 [routerLink]="'artical/' + url" [style]="{cursor: 'pointer'}">{{title}}</h3>
+  <div
+    [innerHTML]="content"
+    [style]="{cursor: 'pointer'}"
+    [routerLink]="'artical/' + url"
+  ></div>
 </p-card>
