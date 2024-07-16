@@ -1,6 +1,8 @@
-@for (artical of articals; track $index) {
-  <app-article-card
-    [title]="artical.title"
-    [content]="artical.content"
-  ></app-article-card>
+@if (articals$ | async) {
+  @for (artical of articals; track $index) {
+    <app-article-card
+      [title]="artical.title"
+      [content]="artical.content"
+    ></app-article-card>
+  }
 }

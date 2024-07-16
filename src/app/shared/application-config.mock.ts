@@ -11,42 +11,44 @@ export const Catigories: string[] = [
 
 
 
+
+
 export const Articals: IArtical[] = [
   {
-    url: 'first',
-    title: 'Статья 1',
+    url: 'first-15-6-1',
+    title: 'first',
     categories: ['Кино', 'Литература'],
-    content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique laudantium voluptas minus quas quod eveniet voluptates sunt praesentium? Tempore maiores aliquam voluptates sint dolorum obcaecati aliquid dignissimos laudantium blanditiis libero.'
+    content: '<p><strong style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">Lorem ipsum dolor sit amet consectetur adipisicing elit.<em> </em></strong><em style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">Similique laudantium</em><strong style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);"><em> </em></strong><em style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">voluptas minus quas quod eveniet voluptates sunt praesentium?</em><strong style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);"> </strong><span style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">Tempore maiores aliquam voluptates sint dolorum obcaecati aliquid dignissimos laudantium blanditiis libero.</span></p>'
   },
   {
-    url: 'first',
-    title: 'Статья 1',
+    url: 'state-15-6-2',
+    title: 'state',
     categories: ['Фотография', 'Спорт'],
-    content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique laudantium voluptas minus quas quod eveniet voluptates sunt praesentium? Tempore maiores aliquam voluptates sint dolorum obcaecati aliquid dignissimos laudantium blanditiis libero.'
+    content: '<p><strong style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">Lorem ipsum dolor sit amet consectetur adipisicing elit.<em> </em></strong><em style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">Similique laudantium</em><strong style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);"><em> </em></strong><em style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">voluptas minus quas quod eveniet voluptates sunt praesentium?</em><strong style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);"> </strong><span style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">Tempore maiores aliquam voluptates sint dolorum obcaecati aliquid dignissimos laudantium blanditiis libero.</span></p>'
   },
   {
-    url: 'first',
-    title: 'Статья 2',
+    url: 'state-15-6-3',
+    title: 'state',
     categories: ['Финансы'],
-    content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique laudantium voluptas minus quas quod eveniet voluptates sunt praesentium? Tempore maiores aliquam voluptates sint dolorum obcaecati aliquid dignissimos laudantium blanditiis libero.'
+    content: '<p><strong style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">Lorem ipsum dolor sit amet consectetur adipisicing elit.<em> </em></strong><em style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">Similique laudantium</em><strong style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);"><em> </em></strong><em style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">voluptas minus quas quod eveniet voluptates sunt praesentium?</em><strong style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);"> </strong><span style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">Tempore maiores aliquam voluptates sint dolorum obcaecati aliquid dignissimos laudantium blanditiis libero.</span></p>'
   },
   {
-    url: 'first',
-    title: 'Статья 3',
+    url: 'Information-15-6-4',
+    title: 'Information',
     categories: ['Кино', 'Литература'],
-    content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique laudantium voluptas minus quas quod eveniet voluptates sunt praesentium? Tempore maiores aliquam voluptates sint dolorum obcaecati aliquid dignissimos laudantium blanditiis libero.'
+    content: '<p><strong style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">Lorem ipsum dolor sit amet consectetur adipisicing elit.<em> </em></strong><em style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">Similique laudantium</em><strong style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);"><em> </em></strong><em style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">voluptas minus quas quod eveniet voluptates sunt praesentium?</em><strong style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);"> </strong><span style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">Tempore maiores aliquam voluptates sint dolorum obcaecati aliquid dignissimos laudantium blanditiis libero.</span></p>'
   },
   {
-    url: 'first',
-    title: 'Статья 4',
+    url: 'text-15-6-5',
+    title: 'text',
     categories: ['Здоровье', 'Спорт'],
-    content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique laudantium voluptas minus quas quod eveniet voluptates sunt praesentium? Tempore maiores aliquam voluptates sint dolorum obcaecati aliquid dignissimos laudantium blanditiis libero.'
+    content: '<p><strong style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">Lorem ipsum dolor sit amet consectetur adipisicing elit.<em> </em></strong><em style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">Similique laudantium</em><strong style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);"><em> </em></strong><em style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">voluptas minus quas quod eveniet voluptates sunt praesentium?</em><strong style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);"> </strong><span style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">Tempore maiores aliquam voluptates sint dolorum obcaecati aliquid dignissimos laudantium blanditiis libero.</span></p>'
   },
   {
-    url: 'first',
-    title: 'Статья 5',
+    url: 'publish-15-6-6',
+    title: 'Publish',
     categories: ['Кино'],
-    content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique laudantium voluptas minus quas quod eveniet voluptates sunt praesentium? Tempore maiores aliquam voluptates sint dolorum obcaecati aliquid dignissimos laudantium blanditiis libero.'
+    content: '<p><strong style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">Lorem ipsum dolor sit amet consectetur adipisicing elit.<em> </em></strong><em style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">Similique laudantium</em><strong style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);"><em> </em></strong><em style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">voluptas minus quas quod eveniet voluptates sunt praesentium?</em><strong style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);"> </strong><span style="background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);">Tempore maiores aliquam voluptates sint dolorum obcaecati aliquid dignissimos laudantium blanditiis libero.</span></p>'
   },
 ];
 

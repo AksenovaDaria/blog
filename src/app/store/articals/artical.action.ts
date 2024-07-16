@@ -4,6 +4,7 @@ import { IArtical } from "../../shared/application.config.interface";
 export enum ArticalsActionTypes {
   loadArticals = '[Articals] Load Articals',
   loadCategories = '[Categories] Load Categories',
+  saveArtical = '[Articals] Save Artical',
 }
 
 export const loadArticals = createAction(
@@ -12,6 +13,11 @@ export const loadArticals = createAction(
 
 export const loadCategories = createAction(
   ArticalsActionTypes.loadCategories,
+)
+
+export const saveArtical = createAction(
+  ArticalsActionTypes.saveArtical,
+  (artical: any) => ({artical}),
 )
 
 

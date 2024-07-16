@@ -1,9 +1,15 @@
 import { createReducer, on } from "@ngrx/store";
 import { IArtical } from "../../shared/application.config.interface";
-import { loadArticals } from "./artical.action";
+import { loadArticals, saveArtical } from "./artical.action";
 import { Articals, Catigories } from "../../shared/application-config.mock";
+import { createUrl } from "../../shared/create-url";
+import { articalsFeatureSelector } from "./artical.selector";
+import { IArticalState } from "./artical.state";
 
-const initialState: IArtical[] = []
+const initialState: IArticalState = {
+  articals: [],
+  categories: [],
+}
 
 export const articalsReducer = createReducer(
   initialState,
@@ -12,5 +18,15 @@ export const articalsReducer = createReducer(
   }),
   on(loadArticals, (state) => {
     return {...state, categories: Catigories}
+  }),
+  on(saveArtical, (state, {artical}) => {
+    const url: string = createUrl(artical.title);
+    const articalNew: IArtical[] = [{...artical, url: url}]
+    const articals: IArtical[] = [...state.articals, ...articalNew];
+    return {
+      ... state,
+      articals: articals
+    }
   })
+
 )

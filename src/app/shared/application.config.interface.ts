@@ -3,4 +3,5 @@ export interface IArtical {
   title: string,
   categories: string[];
   content: string;
+  date?: any
 }
