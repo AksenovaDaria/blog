@@ -8,3 +8,9 @@ export const getArticals = createSelector(
 	articalsFeatureSelector,
 	(articals: IArticalState) => articals.articals,
 );
+
+export const getCategories = createSelector(
+	articalsFeatureSelector,
+	(articals: IArticalState) => articals.categories,
+);
+

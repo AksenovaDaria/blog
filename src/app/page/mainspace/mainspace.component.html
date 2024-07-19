@@ -1,10 +1,21 @@
-@if (articals$ | async) {
-  @for (artical of articals; track $index) {
-      <app-article-card
-        [title]="artical.title"
-        [content]="artical.content"
-        [url]="artical.url"
-      ></app-article-card>
+<div>
+  <app-category-filter
+    [categories]="categories"
+    (categoriesSelected)="filter($event)"
+  ></app-category-filter>
+</div>
+<div>
+  @if (articals$ | async) {
+    @for (artical of articals; track $index) {
+        <app-article-card
+          [title]="artical.title"
+          [content]="artical.content"
+          [url]="artical.url"
 
+        ></app-article-card>
+
+    }
   }
-}
+</div>
+
+

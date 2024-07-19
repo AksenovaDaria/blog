@@ -1,0 +1,18 @@
+<div>
+  <div *ngFor="let category of formArray.controls" [formGroup]="category">
+    <p-checkbox
+      [formControl]="getCategory(category)"
+      [label]="getName(category)"
+      [binary]="true"
+    ></p-checkbox>
+  </div>
+  <p-button
+    label="Показать"
+    [outlined]="true"
+    severity="secondary"
+    [text]="true"
+    class="p-button-raised p-button-sm p-button-rounded p-button-outlined"
+    (onClick)="getSelectedCategories()"
+></p-button>
+</div>
+
