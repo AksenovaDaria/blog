@@ -6,15 +6,16 @@ import { IArticalState } from '../../store/articals/artical.state';
 import { select, Store } from '@ngrx/store';
 import { getArticals } from '../../store/articals/artical.selector';
 import { IArtical } from '../../shared/application.config.interface';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-artical',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './artical.component.html',
   styleUrl: './artical.component.scss'
 })
-export class ArticalComponent implements OnInit {
+export class ArticalComponent {
   public artical: IArtical | undefined = undefined;
   private urlArtical: string | null = null;
 
@@ -24,24 +25,15 @@ export class ArticalComponent implements OnInit {
 
 	) {}
 
-  ngOnInit(): void {
-    this.activatedRoute.paramMap
-    .pipe(
-      map(paramsMap => {
-        this.urlArtical = paramsMap.get('urlArtical');
+  public artical$ = this.store$.pipe(
+		select(getArticals),
+		tap(articals => {
+      this.urlArtical = this.activatedRoute.snapshot.params["urlArtical"]
+      if (this.urlArtical)
+        this.artical = articals.find(item => item.url === this.urlArtical)		
+      })
+	);
 
-      }),
-    )
-    .subscribe(item => item);
 
-    this.store$.pipe(
-      select(getArticals),
-      tap<IArtical[]>(),
-      tap(articals => {
-        if (this.urlArtical)
-        this.artical = articals.find(item => item.url === this.urlArtical)
-      }),
-    ).subscribe()
-  }
 
 }
