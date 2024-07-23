@@ -1,20 +1,16 @@
 <div>
-  @if (categories$ | async) {
     <app-category-filter
       (categoriesSelected)="filter($event)"
     ></app-category-filter>
-  }
 </div>
 <div>
-  @if (articals$ | async) {
-    @for (artical of articals; track $index) {
+    @for (artical of (articals$ | async); track $index) {
         <app-article-card
           [title]="artical.title"
           [content]="artical.content"
           [url]="artical.url"
         ></app-article-card>
     }
-  }
 </div>
 
 

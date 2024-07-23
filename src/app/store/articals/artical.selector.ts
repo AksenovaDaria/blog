@@ -23,8 +23,15 @@ export const filteredArticles = createSelector(
 export const getSelectedCategories = createSelector(
 	articalsFeatureSelector,
 	(state: IArticalState) => {return {categories: state.categories, selectedCategories: state.selectedCategories}},
-
 )
+
+export const getArtical = (props: {url: string}) =>   
+	createSelector(  
+		articalsFeatureSelector,   
+		(state: IArticalState) => {
+			return state.articals.find(item => item.url === props.url)
+		},     
+	);
 
 
 

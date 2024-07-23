@@ -1,6 +1,6 @@
-@if (artical$ | async) {
-  <h3 [style]="{cursor: 'pointer'}">{{artical?.title}}</h3>
+@if (artical$ | async; as artic) {
+  <h3 [style]="{cursor: 'pointer'}">{{artic?.title}}</h3>
   <div
-    [innerHTML]="artical?.content"
+    [innerHTML]="artic?.content"
   ></div>
 }

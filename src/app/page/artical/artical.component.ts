@@ -4,7 +4,7 @@ import { map, tap } from 'rxjs';
 import { RouterModule } from '@angular/router';
 import { IArticalState } from '../../store/articals/artical.state';
 import { select, Store } from '@ngrx/store';
-import { getArticals } from '../../store/articals/artical.selector';
+import { getArtical, getArticals } from '../../store/articals/artical.selector';
 import { IArtical } from '../../shared/application.config.interface';
 import { CommonModule } from '@angular/common';
 
@@ -16,24 +16,14 @@ import { CommonModule } from '@angular/common';
   styleUrl: './artical.component.scss'
 })
 export class ArticalComponent {
-  public artical: IArtical | undefined = undefined;
-  private urlArtical: string | null = null;
+  public artical$ = this.store$.pipe(
+		select(getArtical({url: this.activatedRoute.snapshot.params["urlArtical"]})),
+    tap<IArtical | undefined>(),
+	);
 
   constructor(
 		private readonly activatedRoute: ActivatedRoute,
     private readonly store$: Store<IArticalState>
-
 	) {}
-
-  public artical$ = this.store$.pipe(
-		select(getArticals),
-		tap(articals => {
-      this.urlArtical = this.activatedRoute.snapshot.params["urlArtical"]
-      if (this.urlArtical)
-        this.artical = articals.find(item => item.url === this.urlArtical)		
-      })
-	);
-
-
 
 }
