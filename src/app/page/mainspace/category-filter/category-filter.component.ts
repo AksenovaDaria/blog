@@ -37,10 +37,9 @@ export class CategoryFilterComponent implements OnInit {
       this.formGroup.setControl('categories', formArray);
     }
 
-    this.formArray.valueChanges.subscribe(item => {
-      console.log('formArray', item);
-    })
-
+    // this.formArray.valueChanges.subscribe(item => {
+    //   console.log('formAsdrray', item);
+    // })
   }
 
   getCategory(categ: FormGroup<{name: FormControl<string>; selected: FormControl<boolean>}>): FormControl<boolean>  {
@@ -57,10 +56,18 @@ export class CategoryFilterComponent implements OnInit {
     const selectedCategories: string[] = [];
     for (let i = 0; i<length; i++) {
       if (this.formArray.controls.at(i)?.controls['selected'].getRawValue()) {
-        selectedCategories.push(this.formArray.controls.at(i)?.controls['name'].getRawValue() as string)
+        selectedCategories.push(this.formArray.controls.at(i)?.controls['name'].getRawValue() as string);
       };
     };
-    this.categoriesSelected.emit(selectedCategories)
+    this.categoriesSelected.emit(selectedCategories);
+  }
+
+  clearSelectedCategories(): void {
+    const length = this.formArray.length;
+    for (let i = 0; i<length; i++) {
+      this.formArray.controls[i].controls['selected'].setValue(false);
+    };
+    this.categoriesSelected.emit([]);
   }
 
 }

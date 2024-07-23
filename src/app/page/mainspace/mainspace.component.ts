@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ArticleCardComponent } from "./article-card/article-card.component";
 import { Articals } from '../../shared/application-config.mock';
 import { select, Store } from '@ngrx/store';
-import { getArticals, getCategories } from '../../store/articals/artical.selector';
+import { filterSelector, getArticals, getCategories } from '../../store/articals/artical.selector';
 import { IArticalState } from '../../store/articals/artical.state';
 import { IArtical } from '../../shared/application.config.interface';
 import { tap } from 'rxjs';
@@ -10,8 +10,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import {RouterLink, RouterModule} from '@angular/router';
 import { CategoryFilterComponent } from './category-filter/category-filter.component';
-
-
 
 @Component({
   selector: 'app-mainspace',
@@ -44,25 +42,14 @@ export class MainspaceComponent implements OnInit {
         this.categories = categories;
       }),
     ).subscribe()
-    console.log(this.categories)
   }
 
   filter(categoriesSelected: string[]): void {
     this.store$.pipe(
-      select(getArticals),
-      tap<IArtical[]>(),
-      tap(articals => {
-        this.articals = articals.filter(artical => {
-          return artical.categories.find(category => {
-            return categoriesSelected.find(selectedCategory => {
-              if (category.includes(selectedCategory)){
-                return true
-              } else {return false}
-            })
-          })
-        })
-      }),
-    ).subscribe()
+      select(filterSelector( {categoriesSelected: categoriesSelected})),
+    ).subscribe(item => {
+      this.articals = item
+    })
   }
 
 
