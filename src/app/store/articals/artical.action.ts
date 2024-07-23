@@ -5,6 +5,7 @@ export enum ArticalsActionTypes {
   loadArticals = '[Articals] Load Articals',
   loadCategories = '[Categories] Load Categories',
   saveArtical = '[Articals] Save Artical',
+  filterArticles = '[Articals] Filter Articles'
 }
 
 export const loadArticals = createAction(
@@ -18,6 +19,11 @@ export const loadCategories = createAction(
 export const saveArtical = createAction(
   ArticalsActionTypes.saveArtical,
   (artical: any) => ({artical}),
+)
+
+export const filterArticles = createAction(
+  ArticalsActionTypes.filterArticles,
+  (categoriesSelected: string[]) => ({categoriesSelected})
 )
 
 

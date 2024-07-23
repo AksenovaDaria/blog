@@ -4,6 +4,7 @@ export const ARTICAL_FEATURE = 'state';
 
 export type IArticalState = {
   articals: IArtical[],
-  categories: string[]
+  categories: string[],
+  filteredArticles: IArtical[],
 
 }

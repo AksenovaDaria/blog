@@ -1,8 +1,10 @@
 <div>
-  <app-category-filter
-    [categories]="categories"
-    (categoriesSelected)="filter($event)"
-  ></app-category-filter>
+  @if (categories$ | async) {
+    <app-category-filter
+      [categories]="categories"
+      (categoriesSelected)="filter($event)"
+    ></app-category-filter>
+  }
 </div>
 <div>
   @if (articals$ | async) {
@@ -11,9 +13,7 @@
           [title]="artical.title"
           [content]="artical.content"
           [url]="artical.url"
-
         ></app-article-card>
-
     }
   }
 </div>

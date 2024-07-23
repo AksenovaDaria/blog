@@ -7,26 +7,31 @@ export const articalsFeatureSelector = createFeatureSelector<IArticalState>(ARTI
 
 export const getArticals = createSelector(
 	articalsFeatureSelector,
-	(articals: IArticalState) => articals.articals,
+	(state: IArticalState) => state.articals,
 );
 
 export const getCategories = createSelector(
 	articalsFeatureSelector,
-	(articals: IArticalState) => articals.categories,
+	(state: IArticalState) => state.categories,
 );
 
-export const filterSelector = (props: {categoriesSelected: string[]}) =>   
-	createSelector(     
-	getArticals, (articals) => {
-		return !props.categoriesSelected.length 
-		? articals 
-		: articals.filter(artical => {
-			return artical.categories.find(category => {
-			    return props.categoriesSelected.includes(category)
-			})
-		})
-	}
-	);
+export const filteredArticles = createSelector(
+	articalsFeatureSelector,
+	(state: IArticalState) => state.filteredArticles
+)
+
+// export const filterSelector = (props: {categoriesSelected: string[]}) =>   
+// 	createSelector(     
+// 	getArticals, (articals) => {
+// 		return !props.categoriesSelected.length 
+// 		? articals 
+// 		: articals.filter(artical => {
+// 			return artical.categories.find(category => {
+// 			    return props.categoriesSelected.includes(category)
+// 			})
+// 		})
+// 	}
+// 	);
 
 
 

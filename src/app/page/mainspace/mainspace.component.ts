@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ArticleCardComponent } from "./article-card/article-card.component";
 import { Articals } from '../../shared/application-config.mock';
 import { select, Store } from '@ngrx/store';
-import { filterSelector, getArticals, getCategories } from '../../store/articals/artical.selector';
+import { filteredArticles, getArticals, getCategories } from '../../store/articals/artical.selector';
 import { IArticalState } from '../../store/articals/artical.state';
 import { IArtical } from '../../shared/application.config.interface';
 import { tap } from 'rxjs';
@@ -10,6 +10,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import {RouterLink, RouterModule} from '@angular/router';
 import { CategoryFilterComponent } from './category-filter/category-filter.component';
+import { filterArticles } from '../../store/articals/artical.action';
 
 @Component({
   selector: 'app-mainspace',
@@ -18,41 +19,31 @@ import { CategoryFilterComponent } from './category-filter/category-filter.compo
   templateUrl: './mainspace.component.html',
   styleUrl: './mainspace.component.scss'
 })
-export class MainspaceComponent implements OnInit {
+export class MainspaceComponent {
   public articals: IArtical[] = [];
   public categories: string[] = [];
+  public  categoriesSelected: string[] = []
   
   constructor(
     private readonly store$: Store<IArticalState>
   ){}
 
   public articals$ = this.store$.pipe(
-		select(getArticals),
-		tap<IArtical[]>(),
+		select(filteredArticles),
 		tap(articals => {
       this.articals = articals;
-		}),
+		})
 	);
 
-  ngOnInit(): void {
-    this.store$.pipe(
-      select(getCategories),
-      tap<string[]>(),
-      tap(categories => {
-        this.categories = categories;
-      }),
-    ).subscribe()
-  }
-
-  filter(categoriesSelected: string[]): void {
-    this.store$.pipe(
-      select(filterSelector( {categoriesSelected: categoriesSelected})),
-    ).subscribe(item => {
-      this.articals = item
+  public categories$ = this.store$.pipe(
+    select(getCategories),
+    tap(categories => {
+      this.categories = categories;
     })
+  )
+  
+  filter(categoriesSelected: string[]): void {
+    this.store$.dispatch(filterArticles(categoriesSelected));
   }
-
-
-
 
 }
