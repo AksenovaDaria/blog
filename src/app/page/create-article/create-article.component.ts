@@ -47,7 +47,7 @@ export class CreateArticleComponent implements OnInit {
       categories: this.form.controls['category'].getRawValue(),
       content: this.form.controls['content'].getRawValue(),
     }
-    
+    console.log(artical);
     this.store$.dispatch(saveArtical(artical));
   }
 

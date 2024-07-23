@@ -25,9 +25,13 @@ export const articalsReducer = createReducer(
     const url: string = createUrl(artical.title);
     const articalNew: IArtical[] = [{...artical, url: url}]
     const articals: IArtical[] = [...state.articals, ...articalNew];
+    const isCategorySelect = artical.categories.find((category: string) => {
+      return state.selectedCategories.length === 0 ? true : state.selectedCategories.includes(category)
+    })
     return {
       ... state,
-      articals: articals
+      articals: articals,
+      filteredArticles: isCategorySelect ? [...state.filteredArticles, ...articalNew] : state.filteredArticles
     }
   }),
   on(filterArticles, (state, {categoriesSelected}) => {
@@ -35,7 +39,7 @@ export const articalsReducer = createReducer(
 		? state.articals 
 		: state.articals.filter(artical => {
 			return artical.categories.find(category => {
-			    return categoriesSelected.includes(category)
+			    return categoriesSelected.includes(category);
 			})
 		})
     return {
