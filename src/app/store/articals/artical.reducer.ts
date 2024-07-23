@@ -10,6 +10,7 @@ const initialState: IArticalState = {
   articals: [],
   categories: [],
   filteredArticles: [],
+  selectedCategories: []
 }
 
 export const articalsReducer = createReducer(
@@ -39,7 +40,8 @@ export const articalsReducer = createReducer(
 		})
     return {
       ...state,
-      filteredArticles: filteredArticles
+      filteredArticles: filteredArticles,
+      selectedCategories: categoriesSelected
     }
   })
 

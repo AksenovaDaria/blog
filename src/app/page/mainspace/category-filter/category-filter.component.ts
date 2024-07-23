@@ -4,6 +4,10 @@ import { FormArray, FormControl, FormGroup, FormsModule, ReactiveFormsModule } f
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { EventEmitter } from 'stream';
+import { IArticalState } from '../../../store/articals/artical.state';
+import { select, Store } from '@ngrx/store';
+import { tap } from 'rxjs';
+import { getSelectedCategories } from '../../../store/articals/artical.selector';
 
 
 @Component({
@@ -13,9 +17,26 @@ import { EventEmitter } from 'stream';
   templateUrl: './category-filter.component.html',
   styleUrl: './category-filter.component.scss'
 })
-export class CategoryFilterComponent implements OnInit {
-  @Input() categories: string[] = [];
+export class CategoryFilterComponent {
   categoriesSelected = output<string[]>()
+
+  selectedCategories$ = this.store$.pipe(
+		select(getSelectedCategories),
+		tap((categories) => {
+      if (categories.categories.length) {
+        const categoriesControls = categories.categories.map(category => {
+          const value = categories.selectedCategories.includes(category)
+          return new FormGroup({
+          name: new FormControl<string>(category),
+          selected: new FormControl<boolean>(value)
+        })})
+        const formArray = new FormArray(categoriesControls) as FormArray<FormGroup<{
+          name: FormControl<string >, selected: FormControl<boolean>
+        }>>;
+        this.formGroup.setControl('categories', formArray);
+      }
+		})
+	);
 
   public formGroup = new FormGroup({
     categories: new FormArray<FormGroup<{name: FormControl<string>, selected: FormControl<boolean>}>>([])
@@ -25,26 +46,12 @@ export class CategoryFilterComponent implements OnInit {
     return this.formGroup.controls['categories'];
   }
 
-  ngOnInit(): void {
-    if (this.categories.length) {
-      const categoriesControls = this.categories.map(category => new FormGroup({
-        name: new FormControl<string>(category),
-        selected: new FormControl<boolean>(false)
-      }));
-      const formArray = new FormArray(categoriesControls) as FormArray<FormGroup<{
-        name: FormControl<string >, selected: FormControl<boolean>
-      }>>;
-      this.formGroup.setControl('categories', formArray);
-    }
-
-    // this.formArray.valueChanges.subscribe(item => {
-    //   console.log('formAsdrray', item);
-    // })
-  }
+  constructor(
+    private readonly store$: Store<IArticalState>
+  ){}
 
   getCategory(categ: FormGroup<{name: FormControl<string>; selected: FormControl<boolean>}>): FormControl<boolean>  {
     return categ.get('selected') as FormControl<boolean>;
-
   }
 
   getName(categ: FormGroup<{name: FormControl<string>; selected: FormControl<boolean>}>): string {

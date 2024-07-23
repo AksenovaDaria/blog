@@ -1,7 +1,6 @@
 <div>
   @if (categories$ | async) {
     <app-category-filter
-      [categories]="categories"
       (categoriesSelected)="filter($event)"
     ></app-category-filter>
   }

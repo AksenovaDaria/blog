@@ -6,5 +6,6 @@ export type IArticalState = {
   articals: IArtical[],
   categories: string[],
   filteredArticles: IArtical[],
+  selectedCategories: string[],
 
 }
