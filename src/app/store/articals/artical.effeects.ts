@@ -23,15 +23,11 @@ export class ArticalEffects {
 				ofType(saveArtical),
 				tap(artical => {
                     let length = 0
-                    const observable = this.store$.pipe(
-                        select(getArticals),
-                    )
-                    const subscription = observable.subscribe(articals => { length = articals.length})
+                    this.store$.pipe(take(1)).subscribe((item: any) => {length = item.state.articals.length})
                     const url: string = createUrl(artical.artical.title, length);
 					this.router.navigateByUrl(`/artical/${url}`);
                     const newArtical = {...artical.artical, url: url}
                     this.store$.dispatch(addArtical(newArtical));
-                    subscription.unsubscribe()
 				}),
 			),
 		{dispatch: false},
