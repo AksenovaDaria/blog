@@ -38,7 +38,7 @@ export class CreateArticleComponent implements OnInit {
   }
 
   onTextChange(event: any): void {
-    console.log(event, 'onTextChange');
+    // console.log(event, 'onTextChange');
   }
 
   saveArticle() {

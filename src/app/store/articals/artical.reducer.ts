@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { IArtical } from "../../shared/application.config.interface";
-import { filterArticles, loadArticals, saveArtical } from "./artical.action";
+import {  addArtical, filterArticles, loadArticals, saveArtical } from "./artical.action";
 import { Articals, Catigories } from "../../shared/application-config.mock";
 import { createUrl } from "../../shared/create-url";
 import { articalsFeatureSelector } from "./artical.selector";
@@ -21,17 +21,15 @@ export const articalsReducer = createReducer(
   on(loadArticals, (state) => {
     return {...state, categories: Catigories}
   }),
-  on(saveArtical, (state, {artical}) => {
-    const url: string = createUrl(artical.title);
-    const articalNew: IArtical[] = [{...artical, url: url}]
-    const articals: IArtical[] = [...state.articals, ...articalNew];
+  on(addArtical, (state, {artical}) => {
+    const articals: IArtical[] = state.articals.concat(artical);
     const isCategorySelect = artical.categories.find((category: string) => {
       return state.selectedCategories.length === 0 ? true : state.selectedCategories.includes(category)
     })
     return {
       ... state,
       articals: articals,
-      filteredArticles: isCategorySelect ? [...state.filteredArticles, ...articalNew] : state.filteredArticles
+      filteredArticles: isCategorySelect ? state.articals.concat(artical) : state.filteredArticles
     }
   }),
   on(filterArticles, (state, {categoriesSelected}) => {

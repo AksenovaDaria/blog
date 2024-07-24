@@ -5,7 +5,8 @@ export enum ArticalsActionTypes {
   loadArticals = '[Articals] Load Articals',
   loadCategories = '[Categories] Load Categories',
   saveArtical = '[Articals] Save Artical',
-  filterArticles = '[Articals] Filter Articles'
+  filterArticles = '[Articals] Filter Articles',
+  addArtical = '[Articals] Add Artical'
 }
 
 export const loadArticals = createAction(
@@ -18,7 +19,12 @@ export const loadCategories = createAction(
 
 export const saveArtical = createAction(
   ArticalsActionTypes.saveArtical,
-  (artical: any) => ({artical}),
+  (artical: Omit<IArtical, 'url'>) => ({artical}),
+)
+
+export const addArtical = createAction(
+  ArticalsActionTypes.addArtical,
+  (artical: IArtical) => ({artical}),
 )
 
 export const filterArticles = createAction(
