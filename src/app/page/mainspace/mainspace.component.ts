@@ -17,19 +17,15 @@ import { filterArticles } from '../../store/articals/artical.action';
   styleUrl: './mainspace.component.scss'
 })
 export class MainspaceComponent {
-  public categories: string[] = [];
-  public  categoriesSelected: string[] = []
-  
+  public articals$ = this.store$.pipe(
+		select(filteredArticles),
+	);
+ 
   constructor(
     private readonly store$: Store<IArticalState>
   ){}
 
-  public articals$ = this.store$.pipe(
-		select(filteredArticles),
-	);
-  
   filter(categoriesSelected: string[]): void {
-    console.log('qwerty')
     this.store$.dispatch(filterArticles(categoriesSelected));
   }
 

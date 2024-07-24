@@ -1,4 +1,3 @@
-@if (selectedCategories$ | async) {
     <div *ngFor="let category of formArray.controls" [formGroup]="category">
       <p-checkbox
         [formControl]="getCategory(category)"
@@ -22,6 +21,5 @@
       class="p-button-raised p-button-sm p-button-rounded p-button-outlined"
       (onClick)="clearSelectedCategories()"
     ></p-button>
-}
 
 

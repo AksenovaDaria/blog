@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, output, Output } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, output, Output } from '@angular/core';
 import { CheckboxModule } from 'primeng/checkbox';
 import { FormArray, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -6,7 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { EventEmitter } from 'stream';
 import { IArticalState } from '../../../store/articals/artical.state';
 import { select, Store } from '@ngrx/store';
-import { tap } from 'rxjs';
+import { Subscription, tap } from 'rxjs';
 import { getSelectedCategories } from '../../../store/articals/artical.selector';
 
 
@@ -17,12 +17,15 @@ import { getSelectedCategories } from '../../../store/articals/artical.selector'
   templateUrl: './category-filter.component.html',
   styleUrl: './category-filter.component.scss'
 })
-export class CategoryFilterComponent {
-  categoriesSelected = output<string[]>()
+export class CategoryFilterComponent implements OnInit, OnDestroy {
+  public categoriesSelected = output<string[]>();
+  private observable = this.store$.pipe(
+    select(getSelectedCategories),
+  );
+  private subscription: Subscription | null = null;
 
-  selectedCategories$ = this.store$.pipe(
-		select(getSelectedCategories),
-		tap((categories) => {
+  ngOnInit(): void {
+    this.subscription = this.observable.subscribe((categories) => {
       if (categories.categories.length) {
         const categoriesControls = categories.categories.map(category => {
           const value = categories.selectedCategories.includes(category)
@@ -35,8 +38,12 @@ export class CategoryFilterComponent {
         }>>;
         this.formGroup.setControl('categories', formArray);
       }
-		})
-	);
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
+  }
 
   public formGroup = new FormGroup({
     categories: new FormArray<FormGroup<{name: FormControl<string>, selected: FormControl<boolean>}>>([])

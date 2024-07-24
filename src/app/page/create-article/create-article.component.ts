@@ -32,9 +32,9 @@ export class CreateArticleComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-    this.form.valueChanges.subscribe(item => {
-      console.log(item);
-    })
+    // this.form.valueChanges.subscribe(item => {
+    //   console.log(item);
+    // })
   }
 
   onTextChange(event: any): void {
@@ -47,7 +47,6 @@ export class CreateArticleComponent implements OnInit {
       categories: this.form.controls['category'].getRawValue(),
       content: this.form.controls['content'].getRawValue(),
     }
-    console.log(artical);
     this.store$.dispatch(saveArtical(artical));
   }
 
