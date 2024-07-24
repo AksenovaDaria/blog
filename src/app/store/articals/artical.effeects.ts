@@ -4,10 +4,9 @@ import { select, Store } from "@ngrx/store";
 import { IArticalState } from "./artical.state";
 import { addArtical, saveArtical } from "./artical.action";
 import { switchMap, take, tap } from "rxjs";
-import { createUrl } from "../../shared/create-url";
-import { IArtical } from "../../shared/application.config.interface";
 import { Router } from "@angular/router";
-import { getArticals } from "./artical.selector";
+import { v4 as uuidv4 } from 'uuid';
+
 
 @Injectable({providedIn: 'root'})
 export class ArticalEffects {
@@ -22,11 +21,9 @@ export class ArticalEffects {
 			this.action$.pipe(
 				ofType(saveArtical),
 				tap(artical => {
-                    let length = 0
-                    this.store$.pipe(take(1)).subscribe((item: any) => {length = item.state.articals.length})
-                    const url: string = createUrl(artical.artical.title, length);
-					this.router.navigateByUrl(`/artical/${url}`);
-                    const newArtical = {...artical.artical, url: url}
+                    const id: string = uuidv4();
+					this.router.navigateByUrl(`/artical/${id}`);
+                    const newArtical = {...artical.artical, id: id}
                     this.store$.dispatch(addArtical(newArtical));
 				}),
 			),

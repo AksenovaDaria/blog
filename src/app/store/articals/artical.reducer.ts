@@ -2,7 +2,6 @@ import { createReducer, on } from "@ngrx/store";
 import { IArtical } from "../../shared/application.config.interface";
 import {  addArtical, filterArticles, loadArticals, saveArtical } from "./artical.action";
 import { Articals, Catigories } from "../../shared/application-config.mock";
-import { createUrl } from "../../shared/create-url";
 import { articalsFeatureSelector } from "./artical.selector";
 import { IArticalState } from "./artical.state";
 

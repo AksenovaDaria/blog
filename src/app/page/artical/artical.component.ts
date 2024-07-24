@@ -17,7 +17,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ArticalComponent {
   public artical$ = this.store$.pipe(
-		select(getArtical({url: this.activatedRoute.snapshot.params["urlArtical"]})),
+		select(getArtical({id: this.activatedRoute.snapshot.params["urlArtical"]})),
     tap<IArtical | undefined>(),
 	);
 

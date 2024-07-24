@@ -42,7 +42,7 @@ export class CreateArticleComponent implements OnInit {
   }
 
   saveArticle() {
-    const artical: Omit<IArtical, 'url'> = {
+    const artical: Omit<IArtical, 'id'> = {
       title: this.form.controls['title'].getRawValue(),
       categories: this.form.controls['category'].getRawValue(),
       content: this.form.controls['content'].getRawValue(),

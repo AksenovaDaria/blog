@@ -19,7 +19,7 @@ export const loadCategories = createAction(
 
 export const saveArtical = createAction(
   ArticalsActionTypes.saveArtical,
-  (artical: Omit<IArtical, 'url'>) => ({artical}),
+  (artical: Omit<IArtical, 'id'>) => ({artical}),
 )
 
 export const addArtical = createAction(

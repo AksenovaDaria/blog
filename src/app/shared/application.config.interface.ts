@@ -1,5 +1,5 @@
 export interface IArtical {
-  url: string,
+  id: string,
   title: string,
   categories: string[];
   content: string;

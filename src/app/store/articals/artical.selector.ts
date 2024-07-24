@@ -25,11 +25,11 @@ export const getSelectedCategories = createSelector(
 	(state: IArticalState) => {return {categories: state.categories, selectedCategories: state.selectedCategories}},
 )
 
-export const getArtical = (props: {url: string}) =>   
+export const getArtical = (props: {id: string}) =>   
 	createSelector(  
 		articalsFeatureSelector,   
 		(state: IArticalState) => {
-			return state.articals.find(item => item.url === props.url)
+			return state.articals.find(item => item.id === props.id)
 		},     
 	);
 

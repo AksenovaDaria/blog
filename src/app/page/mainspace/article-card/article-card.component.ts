@@ -13,7 +13,7 @@ import {RouterLink, RouterModule} from '@angular/router';
 export class ArticleCardComponent {
   @Input() title: string | null = null;
   @Input() content: string | null = null;
-  @Input() url!: string;
+  @Input() id!: string;
 
 
   click() {
