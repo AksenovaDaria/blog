@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, input, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { title } from 'process';
@@ -7,7 +7,7 @@ import { EditorModule } from 'primeng/editor';
 import { ButtonModule } from 'primeng/button';
 import { Store } from '@ngrx/store';
 import { IArticalState } from '../../store/articals/artical.state';
-import { saveArtical } from '../../store/articals/artical.action';
+import { changeArtical, saveArtical } from '../../store/articals/artical.action';
 import { IArtical } from '../../shared/application.config.interface';
 import { InputTextModule } from 'primeng/inputtext';
 
@@ -20,6 +20,8 @@ import { InputTextModule } from 'primeng/inputtext';
   styleUrl: './create-article.component.scss'
 })
 export class CreateArticleComponent implements OnInit {
+  @Input() artical: IArtical | undefined = undefined;
+  @Output() editingCompleted = new EventEmitter();
   public categories: string[] = Catigories;
 
   public form = new FormGroup({
@@ -33,6 +35,11 @@ export class CreateArticleComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
+    if (this.artical !== undefined) {
+      this.form.controls['title'].setValue(this.artical.title);
+      this.form.controls['category'].setValue(this.artical.categories);
+      this.form.controls['content'].setValue(this.artical.content);
+    }
     // this.form.valueChanges.subscribe(item => {
     //   console.log(item);
     // })
@@ -42,13 +49,24 @@ export class CreateArticleComponent implements OnInit {
     // console.log(event, 'onTextChange');
   }
 
-  saveArticle() {
-    const artical: Omit<IArtical, 'id'> = {
-      title: this.form.controls['title'].getRawValue(),
-      categories: this.form.controls['category'].getRawValue(),
-      content: this.form.controls['content'].getRawValue(),
+  saveArticle(): void {
+    if (this.artical) {
+      this.artical = {
+        ...this.artical,
+        title: this.form.controls['title'].getRawValue(),
+        categories: this.form.controls['category'].getRawValue(),
+        content: this.form.controls['content'].getRawValue(),
+      }
+      this.store$.dispatch(changeArtical(this.artical));
+      this.editingCompleted.emit();
+    } else {
+      const newArtical: Omit<IArtical, 'id'> = {
+        title: this.form.controls['title'].getRawValue(),
+        categories: this.form.controls['category'].getRawValue(),
+        content: this.form.controls['content'].getRawValue(),
+      }
+      this.store$.dispatch(saveArtical(newArtical));
     }
-    this.store$.dispatch(saveArtical(artical));
   }
 
 }

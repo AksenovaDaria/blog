@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { IArtical } from "../../shared/application.config.interface";
-import {  addArtical, filterArticles, loadArticals, saveArtical } from "./artical.action";
+import {  addArtical, changeArtical, filterArticles, loadArticals, saveArtical } from "./artical.action";
 import { Articals, Catigories } from "../../shared/application-config.mock";
 import { articalsFeatureSelector } from "./artical.selector";
 import { IArticalState } from "./artical.state";
@@ -43,6 +43,22 @@ export const articalsReducer = createReducer(
       ...state,
       filteredArticles: filteredArticles,
       selectedCategories: categoriesSelected
+    }
+  }),
+  on(changeArtical, (state, {artical}) => {
+    const index = state.articals.findIndex(item => item.id === artical.id);
+    const articals = [...state.articals];
+    const newArtcals = [...articals.slice(0, index), ...[artical], ...articals.slice(index+1, articals.length)];
+    const filteredArticles = !state.categories.length
+		? newArtcals :  newArtcals.filter(artic => {
+			return artic.categories.find(category => {
+			    return state.selectedCategories.includes(category);
+			})
+		});
+    return{
+      ...state,
+      articals: newArtcals,
+      filteredArticles: filteredArticles
     }
   })
 

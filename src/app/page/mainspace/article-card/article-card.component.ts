@@ -15,9 +15,4 @@ export class ArticleCardComponent {
   @Input() content: string | null = null;
   @Input() id!: string;
 
-
-  click() {
-    console.log('click')
-  }
-
 }
