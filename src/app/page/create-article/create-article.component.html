@@ -1,14 +1,14 @@
-<div [formGroup]="form" >
+<div [formGroup]="form" class="create-article-form">
   <div class="article-form">
-    <h3 class="article-form__designation">Заголовок</h3>
-    <input formControlName="title" [style]="{border: 'none', width: '400px'}">
+    <h3 class="article-form__designation">Название</h3>
+    <input type="text" pInputText formControlName="title" [style]="{ width: '400px'}">
   </div>
   <div class="article-form" >
     <h3 class="article-form__designation">Категории</h3>
     <p-multiSelect
       [options]="categories"
       formControlName="category"
-      [style]="{border: 'none', width: '400px'}"
+      [style]="{ width: '400px'}"
     ></p-multiSelect>
   </div>
   <p-editor
@@ -19,12 +19,12 @@
 </div>
 
 <p-button
-label="Сохранить статью"
-[outlined]="true"
-severity="secondary"
-[text]="true"
-class="p-button-raised p-button-sm p-button-rounded p-button-outlined"
-(onClick)="saveArticle()"
+  label="Сохранить статью"
+  [outlined]="true"
+  severity="secondary"
+  [text]="true"
+  class="p-button-raised p-button-sm p-button-rounded p-button-outlined"
+  (onClick)="saveArticle()"
 ></p-button>
 
 

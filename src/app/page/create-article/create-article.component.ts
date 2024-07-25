@@ -9,12 +9,13 @@ import { Store } from '@ngrx/store';
 import { IArticalState } from '../../store/articals/artical.state';
 import { saveArtical } from '../../store/articals/artical.action';
 import { IArtical } from '../../shared/application.config.interface';
+import { InputTextModule } from 'primeng/inputtext';
 
 
 @Component({
   selector: 'app-create-article',
   standalone: true,
-  imports: [MultiSelectModule, FormsModule, ReactiveFormsModule, EditorModule, ButtonModule],
+  imports: [MultiSelectModule, FormsModule, ReactiveFormsModule, EditorModule, ButtonModule, InputTextModule],
   templateUrl: './create-article.component.html',
   styleUrl: './create-article.component.scss'
 })

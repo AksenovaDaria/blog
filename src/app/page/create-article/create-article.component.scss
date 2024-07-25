@@ -2,14 +2,25 @@
   display: flex;
   flex-direction: row;
   width: 100%;
+  margin: 8px 0px;
 
 
   &__designation{
     width: 150px;
+    margin: 8px 0px;
+
 
   }
 }
 
 .article-form h3 {
   margin: 10px;
+}
+
+p-button{
+  margin: 8px;
+}
+
+.create-article-form{
+  margin: 8px;
 }
