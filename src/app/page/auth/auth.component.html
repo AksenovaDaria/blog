@@ -1,0 +1,17 @@
+<div [formGroup]="form" class="auth-form">
+    <input type="text" pInputText formControlName="name" [style]="{margin: '16px 0px'}" >
+    <p-password formControlName="password" [feedback]="false" [style]="{margin: '16px 0px'}"/>
+    <div class="button">
+      <a routerLink="/registration">У меня нет профиля</a>
+      <p-button
+        label="Войти"
+        [outlined]="true"
+        severity="secondary"
+        [text]="true"
+        class="p-button-raised p-button-sm p-button-rounded p-button-outlined"
+        [style]="{margin: '16px auto 16px 0'}"
+        (onClick)="auth()"
+      ></p-button>
+    </div>
+
+</div>

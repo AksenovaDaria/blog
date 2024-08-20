@@ -1,0 +1,29 @@
+<div [formGroup]="form" class="register-form">
+  <div formArrayName="data">
+    @for (item of registrationData; track $index) {
+      <div class="register-form_row">
+        <div [style]="{weight: '200px'}">{{registrationData[$index].description}}</div>
+        <div>
+          <input type="text" pInputText [formControlName]="$index" [style]="{margin: '16px 0px 0px 0px'}" >
+
+        </div>
+
+      </div>
+      @if (itemArray($index).status === 'INVALID') {
+        <div class="error">{{registrationData[$index].error}}</div>
+      }
+    }
+  </div>
+  <div class="button">
+    <p-button
+      label="Зарегистрироваться"
+      [outlined]="true"
+      severity="secondary"
+      [text]="true"
+      class="p-button-raised p-button-sm p-button-rounded p-button-outlined"
+      [style]="{margin: '16px auto 16px 0'}"
+      [disabled]="form.status === 'INVALID'"
+      (onClick)="register()"
+    ></p-button>
+  </div>
+</div>

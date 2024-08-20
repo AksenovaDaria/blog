@@ -11,5 +11,28 @@
       class="p-button-raised p-button-sm p-button-rounded p-button-outlined"
       routerLink="/create"
     ></p-button>
+    @if(!user) {
+      <p-button
+        [outlined]="true"
+        severity="secondary"
+        [text]="true"
+        label="Вход"
+
+        icon="pi pi-warehouse"
+        class="p-button-raised p-button-sm p-button-rounded p-button-outlined"
+        routerLink="/auth"
+      ></p-button>
+    } @else {
+      <p-button
+        [outlined]="true"
+        severity="secondary"
+        [text]="true"
+        label="Профиль"
+
+        icon="pi pi-warehouse"
+        class="p-button-raised p-button-sm p-button-rounded p-button-outlined"
+        routerLink="/profile"
+      ></p-button>
+    }
   </ng-template>
 </p-menubar>

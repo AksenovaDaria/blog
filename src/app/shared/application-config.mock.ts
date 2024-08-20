@@ -1,4 +1,63 @@
-import { IArtical } from "./application.config.interface";
+import { IArtical, IRegistration, IUser } from "./application.config.interface";
+
+export const Users: IUser[] = [
+  {
+    nickname: 'Bob3',
+    name: 'Bob',
+    email: 'bob@mail.ru',
+    password: 'Qwerty123*',
+  },
+  {
+    nickname: 'Kate1',
+    name: 'Kate',
+    email: 'kate@mail.ru',
+    password: 'Qwerty123*'
+  },
+  {
+    nickname: 'Peter',
+    email: 'peter@mail.ru',
+    name: 'Peter',
+    password: 'Qwerty123*'
+  },
+  {
+    nickname: 'Peter2',
+    email: 'pit@mail.ru',
+    name: 'Peter',
+    password: 'Qwerty123*'
+  },
+
+]
+
+export const RegistrationData: IRegistration[] = [
+  {
+    name: 'name',
+    description: 'Имя',
+    regular: '^[а-яА-ЯёЁa-zA-Z]+$',
+    error: 'Введите имя на английском или русском языке'
+  },
+  {
+    name: 'email',
+    description: 'Email',
+    regular: '([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)',
+    error: 'Введите e-mail'
+
+  },
+  {
+    name: 'password',
+    description: 'Пароль',
+    regular: '^[a-zA-Z][a-zA-Z0-9-_\.]{6,20}$',
+    error: 'Необходимо использовать строчные и прописные латинские буквы, цифры'
+
+  },
+  {
+    name: 'nickname',
+    description: 'Никнейм',
+    regular: '^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$',
+    error: 'Возможно использовать только латинские буквы и цифры'
+
+  },
+
+]
 
 export const Catigories: string[] = [
   'Финансы',

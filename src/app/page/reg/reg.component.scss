@@ -1,0 +1,30 @@
+.register-form {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &_row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.error{
+  margin: 0;
+  height: 1px;
+  color: red;
+  font-size: smaller;
+
+
+}
+
+
